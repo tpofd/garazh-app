@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"]
+      "@/images/*": ["./src/media/images*"]
     }
-  }
+  },
+  "exclude": ["node_modules", "build", "coverage", "dist", "lib"]
 }
