@@ -60,4 +60,5 @@ def get_typeform_data():
     b = pd.DataFrame.from_dict(question_titles, orient='index')
 
     final_table = a.merge(b, left_index=True, right_index=True)
+    final_table.columns = ['answer', 'question']
     return final_table
