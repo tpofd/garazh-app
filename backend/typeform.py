@@ -1,4 +1,5 @@
 from typeform import Typeform
+from flask import Flask
 import json
 import plotly.express as px
 import plotly.graph_objects as go
@@ -18,7 +19,7 @@ import pandas as pd
 def get_typeform_data():
     # обрабатываем ответы
     responses = Typeform('FfLZwidfYeoAbHjamv3QCUpDimgA9oXFg6KUWhBS6yyz').responses
-    result: dict = responses.list('or3ePC3s')
+    result = responses.list('or3ePC3s')
 
     result = str(result).replace("'", '"')
 
@@ -47,7 +48,7 @@ def get_typeform_data():
     # обрабатываем вопросы
 
     forms = Typeform('FfLZwidfYeoAbHjamv3QCUpDimgA9oXFg6KUWhBS6yyz').forms
-    result: dict = forms.get('or3ePC3s')
+    result = forms.get('or3ePC3s')
 
     result = str(result).replace("'", '"')
     result = str(result).replace('True', '"True"')
@@ -84,6 +85,7 @@ def get_typeform_data():
     return final_table
 
 
+df = get_typeform_data()
 # пример круговой диаграммы
 
 tmp = df.loc[pd.Index(['Hx0Y0ufJuFB1'])].groupby(['answer']).count().reset_index()
@@ -102,12 +104,11 @@ fig.write_image("hist.png")
 
 # Генерируем презентацию
 
-title='Automated Presentation Creating Process\n\
-Garazh Moscow Travel Hack '
+title='Содержание отчета'
 prs = Presentation()
 
-# front page
-#-----------------------------------------------------------------------------------------------------------------------
+    # front page
+    #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 prs.slide_width = Inches(16)
 prs.slide_height = Inches(9)
@@ -115,61 +116,20 @@ prs.slide_height = Inches(9)
 
 
 shape = slide.shapes.add_shape(
-    MSO_SHAPE.RECTANGLE, 0, Inches(9/1.5),Inches(16),Inches(9/8.5)
+        MSO_SHAPE.RECTANGLE, 0, Inches(9/1.5),Inches(16),Inches(9/8.5)
 )
 shape.shadow.inherit = False
 fill=shape.fill
 fill.solid()
-fill.fore_color.rgb=RGBColor(255,0,0)
 shape.text= title
-line=shape.line
-line.color.rgb=RGBColor(255,0,0)
 #-----------------------------------------------------------------------------------------------------------------------
 
-#Page 1
-#-----------------------------------------------------------------------------------------------------------------------
+    #Page 2
+    #-----------------------------------------------------------------------------------------------------------------------
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 
 shape = slide.shapes.add_shape(
-    MSO_SHAPE.RECTANGLE, 0, Inches(0.5),Inches(16),Inches(0.3))
-shape.shadow.inherit = False
-fill=shape.fill
-fill.solid()
-fill.fore_color.rgb=RGBColor(255,0,0)
-shape.text= "People analytics"
-line=shape.line
-line.color.rgb=RGBColor(255,0,0)
-
-N = 100
-
-random_x = np.random.randn(N) + 10
-random_y = np.random.randn(N)+5
-random_z = np.random.randn(N) +20
-
-dte=datetime.datetime.today()
-dt_lst=[dte-datetime.timedelta(days=i) for i in range(N)]
-
-chart_data = ChartData()
-chart_data.categories = dt_lst
-chart_data.add_series('Data 1',    random_x)
-chart_data.add_series('Data 2',    random_y)
-chart_data.add_series('Data 3',    random_z)
-
-x, y, cx, cy = Inches(1), Inches(2), Inches(14), Inches(6)
-chart = slide.shapes.add_chart(
-    XL_CHART_TYPE.LINE, x, y, cx, cy, chart_data
-).chart
-chart.has_legend = True
-chart.legend.include_in_layout = False
-chart.series[2].smooth = True
-
-
-#Page 2
-#-----------------------------------------------------------------------------------------------------------------------
-slide = prs.slides.add_slide(prs.slide_layouts[6])
-
-shape = slide.shapes.add_shape(
-    MSO_SHAPE.RECTANGLE, 0, Inches(0.5),Inches(16),Inches(0.3))
+        MSO_SHAPE.RECTANGLE, 0, Inches(0.5),Inches(16),Inches(0.3))
 shape.shadow.inherit = False
 fill=shape.fill
 fill.solid()
@@ -181,7 +141,7 @@ line.color.rgb=RGBColor(255,0,0)
 left = Inches(1)
 top = Inches(2)
 width = Inches(7)
-pic = slide.shapes.add_picture(imgpth, left, top, width=width)
+pic = slide.shapes.add_picture('img.png', left, top, width=width)
 left = Inches(8)
 pic = slide.shapes.add_picture('hist.png', left, top, width=width)
 
