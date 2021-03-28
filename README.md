@@ -16,9 +16,9 @@ GARAGECAT - комплексное решение, для мониторинга
 * MySQL
 
 ## Get started
-1. Посмотреть Frontend-решение можно здесь [по ссылке](https://garazh-app.vercel.app/)
+### Сборка Frontend
+Итоговую сборку можно посмотреть [здесь](https://garazh-app.vercel.app/)
 
-### сборка front-end
 Сборка продакшн версии
 
 ```shell
@@ -32,4 +32,20 @@ npm run build
 ```shell
 cd ./frontend
 npm run dev
+```
+
+### Сборка Backend
+1. Склонируем репозиторий
+```
+$ git clone https://github.com/tpofd/garazh-app.git
+$ cd backend
+```
+2. Инициализируем virtualenv
+```
+$ virtualenv --no-site-packages env
+$ source env/bin/activate
+```
+3. Настроим зависимости
+```
+$ pip install -r requirements.txt
 ```
