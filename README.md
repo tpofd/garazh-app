@@ -37,6 +37,15 @@ npm run dev
 ### Сборка Backend
 1. Склонируем репозиторий
 ```
-git clone https://github.com/tpofd/garazh-app.git
-cd backend
+$ git clone https://github.com/tpofd/garazh-app.git
+$ cd backend
+```
+2. Инициализируем virtualenv
+```
+$ virtualenv --no-site-packages env
+$ source env/bin/activate
+```
+3. Настроим зависимости
+```
+$ pip install -r requirements.txt
 ```
