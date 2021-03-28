@@ -6,8 +6,8 @@ GARAGECAT - комплексное решение, для мониторинга
 ## Структура проекта
 * [Frontend-решение](https://github.com/tpofd/garazh-app/tree/main/frontend)
 * [Концепт дизайна в Figma](https://www.figma.com/file/17PcD01TieyyW4vYFUocSn/Untitled?node-id=0%3A1)
-* Backend-решение
-* Решение по интеграции Typeform и real-time генерации отчета в pptx
+* [Backend-решение](https://github.com/tpofd/garazh-app/tree/main/backend)
+* [Решение по интеграции Typeform и real-time генерации отчета в pptx](https://github.com/tpofd/garazh-app/blob/main/backend/typeform.py)
 
 ## Используемые технологии 
 * Microsoft Azure
