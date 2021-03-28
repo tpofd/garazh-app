@@ -19,7 +19,7 @@ export const CanvasCreateReview = ({points}) => {
     const [linePos,setLinePos] = useState([{x:0,y:0}])
     const arr = []
     useEffect(()=>{
-        for(let i = 1; i<points.length; i++){
+        for(let i = 0; i<points.length; i++){
             let v = points[i]
             arr.push(v.coords.x - points[0].coords.x)
             arr.push(v.coords.y - points[0].coords.y)
@@ -110,8 +110,8 @@ export const CanvasCreateReview = ({points}) => {
                             />
                         ))}
                         <Line
-                            x={points[0]?.coords?.x}
-                            y={points[0]?.coords?.y}
+                            x={linePos[0]}
+                            y={linePos[1]}
                             points={linePos}
                             tension={0.5}
                             stroke="red"

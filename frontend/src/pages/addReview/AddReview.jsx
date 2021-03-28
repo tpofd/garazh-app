@@ -14,6 +14,7 @@ export const AddReview=()=>{
     const {selectedId, selectShapeId} = useContext(CanvasReviewContextSelected)
     const [points, setPoints] = useState([])
     const [name,setName] = useState("")
+    const index = exponats.findIndex(v=>(v.picture_id === selectedId))
     useEffect(()=>{
         getAllExps().then(data=>{
             console.log("data",data)
@@ -23,7 +24,7 @@ export const AddReview=()=>{
     },[])
     useEffect(()=>{
         if(selectedId){
-            setName(exponats[selectedId-1]?.name)
+            setName(exponats[index]?.event_name)
         }
     },[selectedId])
     const accseptHandler = ()=>{
@@ -32,11 +33,10 @@ export const AddReview=()=>{
     const addHandler = ()=>{
         const _points = [...points]
         console.log("_points",_points,selectedId,exponats)
-        let index = exponats.findIndex(v=>(v.picture_id === selectedId))
         setPoints([..._points,{
             y: selectedId,
             coords: {x:exponats[index].x,y:exponats[index].y},
-            name: exponats[index]?.name
+            name: exponats[index]?.event_name
         }])
     }
     return (
