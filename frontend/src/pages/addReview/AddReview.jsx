@@ -31,14 +31,17 @@ export const AddReview=()=>{
     }
     const addHandler = ()=>{
         const _points = [...points]
+        console.log("_points",_points,selectedId,exponats)
+        let index = exponats.findIndex(v=>(v.picture_id === selectedId))
         setPoints([..._points,{
             y: selectedId,
-            name: exponats[selectedId-1]?.name
+            coords: {x:exponats[index].x,y:exponats[index].y},
+            name: exponats[index]?.name
         }])
     }
     return (
         <>
-            <CanvasCreateReview />
+            <CanvasCreateReview points={points}/>
             <motion.div initial={{opacity:0,scaleY:0}} animate={{opacity:1,scaleY:1}} className={S.wrapper}>
                 <Card title="Вести наблюдение">
                     <Grid container spacing={3}>

@@ -21,6 +21,7 @@ export const Base = () => {
         })
     },[])
     useEffect(()=>{
+        console.log(selectedId)
         if(selectedId){
             setName(exponats[selectedId-1]?.name)
         }

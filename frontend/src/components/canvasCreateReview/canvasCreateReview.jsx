@@ -1,4 +1,4 @@
-import {Stage, Layer, Rect, Text, Image, Group} from 'react-konva';
+import {Stage, Layer, Rect, Text, Image, Group, Line} from 'react-konva';
 import map from "../../images/map.svg"
 import {useContext, useEffect, useState} from "react";
 import useImage from 'use-image';
@@ -11,11 +11,23 @@ import {useHistory} from "react-router-dom";
 import {CanvasReviewContext, CanvasReviewContextSelected} from "../../pages/addReview/AddReviewContext";
 import {ExponatWiewer} from "../exponat/ExponatWiewer";
 
-export const CanvasCreateReview = () => {
+export const CanvasCreateReview = ({points}) => {
     const [mapImage] = useImage(map)
     const [position, setPosition] = useState({stageScale: 1, stageX: 0, stageY: 0})
     const {exponats,setExponats} = useContext(CanvasReviewContext)
     const {selectedId, selectShapeId} = useContext(CanvasReviewContextSelected)
+    const [linePos,setLinePos] = useState([{x:0,y:0}])
+    const arr = []
+    useEffect(()=>{
+        for(let i = 1; i<points.length; i++){
+            let v = points[i]
+            arr.push(v.coords.x - points[0].coords.x)
+            arr.push(v.coords.y - points[0].coords.y)
+        }
+        setLinePos(arr)
+    },[points])
+    console.log(linePos)
+    console.log(points)
     useEffect(()=>{
         getAllPictureIn(1).then(data=>{
             console.log(data)
@@ -97,6 +109,16 @@ export const CanvasCreateReview = () => {
                                 shape={e}
                             />
                         ))}
+                        <Line
+                            x={points[0]?.coords?.x}
+                            y={points[0]?.coords?.y}
+                            points={linePos}
+                            tension={0.5}
+                            stroke="red"
+                            fillLinearGradientStartPoint={{ x: -50, y: -50 }}
+                            fillLinearGradientEndPoint={{ x: 50, y: 50 }}
+                            fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
+                        />
                     </Group>
                 </Layer>
             </Stage>

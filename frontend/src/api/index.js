@@ -1,8 +1,7 @@
 import axios from "axios"
 
 const instance = axios.create({
-    baseURL: 'http://b74a8f42f257.ngrok.io/api/',
-    timeout: 0,
+    baseURL: 'http://40.117.124.200:5000/api/',
 });
 
 export const getAllExps = () => {

@@ -16,6 +16,7 @@ export const ExponatWiewer = ({shape, onChange, onSelect, isSelected}) => {
             fill="#D86F6F"
             ref={shapeRef}
             onClick={onSelect}
+            onTap={onSelect}
         />
     )
 }
