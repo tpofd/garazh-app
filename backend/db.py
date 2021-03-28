@@ -18,27 +18,27 @@ def add_user(name, role): #+
     session.add(bookOne)
     session.commit()
 
-def add_dude(description): #-
+def add_dude(description): #+
     bookOne = Dudes(description=description, isCompleted=0)
     session.add(bookOne)
     session.commit()
 
-def add_exposition(id, name):
-    bookOne = Expositions(id=id, name=name)
+def add_exposition(name): #+
+    bookOne = Expositions(name=name)
     session.add(bookOne)
     session.commit()
 
-def add_moving(user_id, action_date, picture_id):
+def add_moving(user_id, action_date, picture_id): #+
     bookOne = Movings(user_id=user_id, action_date=action_date, picture_id=picture_id)
     session.add(bookOne)
     session.commit()
 
-def add_picture(picture_id, event_id, x, y,event_name):
-    bookOne = Pictures(picture_id=picture_id, event_id=event_id, x=x,y=y, event_name=event_name)
+def add_picture(event_id, x, y,event_name): #+
+    bookOne = Pictures(event_id=event_id, x=x,y=y, event_name=event_name)
     session.add(bookOne)
     session.commit()
 
-def get_all_users():
+def get_all_users(): #+
     print("All users")
     for us in session.query(Users).all():
         print(vars(us)['role'])
@@ -51,25 +51,37 @@ def get_user(uid):
         print(u.uid)
     return u
 
-def get_dude_movings(user_id):
+def get_dude_movings(user_id): #+
     #print("All movings by id")
     print(user_id)
     u = engine.execute("select * from movings where user_id={}".format(user_id))
     #print(u)
     return u
+def set_dude_status(user_id,status): #+
+    #print("All movings by id")
+    print(user_id)
+    u = engine.execute("UPDATE movings SET isCompleted={} WHERE user_id={}".format(status,user_id))
+    #print(u)
+    return u
 
-def get_all_pictures():
+def get_all_pictures(): #+
     print("All pictures")
     for us in session.query(Pictures).all():
         print(vars(us))
     return session.query(Pictures).all()
 
-def get_all_exps():
+def get_all_exps(): #+
     print("All exps")
     for us in session.query(Expositions).all():
         print(vars(us))
     return session.query(Expositions).all()
 
-def move_user(user_id, picture_id):
+def move_user(user_id, picture_id): #+
     engine.execute("INSERT INTO movings(user_id, action_date, picture_id) VALUES ({}, NULL, {})".format(user_id,picture_id))
     session.commit()
+
+def get_plan(sid):
+    #get all pictures objects in specifified exposition
+    print("here")
+    u = engine.execute("SELECT * FROM pictures WHERE event_id={}".format(sid))
+    return u
