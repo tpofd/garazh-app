@@ -1,7 +1,9 @@
 from flask import Flask,jsonify,request
+from flask import send_file, send_from_directory, safe_join,abort
 from flask_cors import CORS, cross_origin
 import random
 import json
+import gen_pres
 import db
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -21,6 +23,16 @@ def get_exps():
     a = {"data":toRet}
     return jsonify(a)
 
+
+
+@app.route('/api/get/pptx', methods=['GET']) # TODO:
+@cross_origin()
+def get_pptx():
+    gen_pres.getpptx()
+    return send_from_directory("/home/azureuser/pres/testapi", filename="typeform_presentation.pptx",as_attachment=True)
+    #except:
+    #    return 404
+ 
 
 @app.route('/api/get/pictures', methods=['GET']) # TODO:
 @cross_origin()
@@ -133,4 +145,4 @@ def get_user(uid):
     return json_object
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
