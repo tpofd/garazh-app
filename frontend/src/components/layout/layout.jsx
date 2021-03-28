@@ -3,7 +3,7 @@ import S from "./layout.module.scss"
 import {Image} from "semantic-ui-react";
 import logo from "../../images/logo.svg"
 import {Link, NavLink} from "react-router-dom";
-import {Add,List as ListIcon, AddLocation, Today} from "@material-ui/icons";
+import {Add, List as ListIcon, AddLocation, Today, MapOutlined} from "@material-ui/icons";
 import {IconButton, List, ListItem} from "@material-ui/core";
 
 export const Layout = ({children}) => (
@@ -30,6 +30,9 @@ export const Layout = ({children}) => (
                     </ListItem>
                     <ListItem>
                         <NavLink to="/tasks"><IconButton><Today/></IconButton></NavLink>
+                    </ListItem>
+                    <ListItem>
+                        <NavLink to="/user-map"><IconButton><MapOutlined/></IconButton></NavLink>
                     </ListItem>
                 </List>
             </nav>

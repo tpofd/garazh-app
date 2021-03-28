@@ -13,6 +13,7 @@ import {BaseContext} from "./pages/base/BaseContext";
 import {AddReview} from "./pages/addReview/AddReview";
 import {AddReviewContext} from "./pages/addReview/AddReviewContext";
 import {Tasks} from "./pages/tasks/Tasks";
+import {UsersMap} from "./pages/usersMap/UsersMap";
 const history = createBrowserHistory();
 
 export const App = () => (
@@ -35,6 +36,9 @@ export const App = () => (
                     </Route>
                     <Route key={"/tasks"} exact path="/tasks">
                         <Tasks/>
+                    </Route>
+                    <Route key={"/user-map"} exact path="/user-map">
+                        <UsersMap />
                     </Route>
                 </AnimatePresence>
             </Switch>
