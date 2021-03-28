@@ -9,6 +9,8 @@ import {CardPeopleTimesIncome} from "../../components/cardPeopleTimesIncome/card
 import {CardRequests} from "../../components/cardRequests/cardRequests";
 import {CardSexAge} from "../../components/cardSexAge/cardSexAge";
 import {CardNationality} from "../../components/cardNationality/cardNationality";
+import {Button} from "@material-ui/core";
+import {ArrowDownward} from "@material-ui/icons";
 
 export const Users = () => {
     return (
@@ -27,6 +29,7 @@ export const Users = () => {
             <CardRequests key="5"/>
             <CardSexAge key="6"/>
             <CardNationality key="7"/>
+            <Button href={"./presentation28_03.pptx"} download={"./presentation28_03.pptx"} color={"primary"} variant={"contained"}><ArrowDownward/>Скачать презентацию</Button>
         </motion.div>
     )
 }
