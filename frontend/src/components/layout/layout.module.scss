@@ -1,0 +1,22 @@
+.container{
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  background-color: #EFF3F9;
+  min-height: 100vh;
+}
+.header{
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #EBEBEB;
+  background-color: white;
+}
+.logoWrapper{
+  padding: 35px 20px 20px;
+}
+.avatarWrapper{
+  padding: 20px;
+}
+.main{
+  max-width: 100%;
+  overflow: hidden;
+}
