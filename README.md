@@ -35,6 +35,8 @@ npm run dev
 ```
 
 ### Сборка Backend
+Итоговую сборку можно посмотреть [здесь](http://40.117.124.200:5000)
+
 1. Склонируем репозиторий
 ```
 $ git clone https://github.com/tpofd/garazh-app.git
