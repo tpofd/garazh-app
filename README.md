@@ -16,3 +16,19 @@ GARAGECAT - комплексное решение, для мониторинга
 * MySQL
 
 ## Get started
+
+### сборка front-end
+Сборка продакшн версии
+
+```shell
+cd ./frontend
+npm install
+npm run build
+```
+
+Для разработки
+
+```shell
+cd ./frontend
+npm run dev
+```
