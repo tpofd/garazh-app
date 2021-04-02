@@ -51,3 +51,7 @@ $ source env/bin/activate
 ```
 $ pip install -r requirements.txt
 ```
+
+### Источники
+* [Библиотека для генерации pptx файлов](https://gist.github.com/Eserthesay/bc5155484b7cd696a53ccd4f13e0c5f9)
+* [Шаблон Figma для создания дизайна графиков](https://dribbble.com/shots/11278911-Freebie-Dashboard-design-VK-statistics)
